@@ -1,12 +1,13 @@
+<div class="container">
 <h1>List of restaurants</h1>
+<%= link_to "Add a restaurant", new_restaurant_path, class: 'btn btn-primary' %>
 <ul>
   <p><% @restaurants.each do |r| %></p>
   <li>
-    <p><%= r.name %></p>
-    <p><%= r.category %></p>
-    <p><%= r.address %></p>
-    <p><%= r.phone_number %></p>
-    <%= link_to "Go to #{r.name} page", restaurant_path(r) %>
+    <p><%= r.name %> - Cuisine: <%= r.category %></p>
+    <p>Address: <%= r.address %> - Phone: <%= r.phone_number %></p>
+    <p><%= link_to "Edit #{r.name}", edit_restaurant_path(r), class: 'btn btn-primary' %> <%= link_to "Go to #{r.name} page", restaurant_path(r), class: 'btn btn-primary' %> <%= link_to "Delete #{r.name}", r, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-primary' %></p>
   </li>
   <% end %>
 </ul>
+</div>
